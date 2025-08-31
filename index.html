@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .parent-conatiner{
+        background-color: white;
+    }
+    .parent{
+        border: 1px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+    }
+    .parent .child{
+        background-color: black;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .parent .child #display{
+        padding: 15px;
+        width: 85%;
+        border-radius: 10px;
+    }
+    .parent .keys{  
+        background-color: black;    
+        padding: 10px;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+
+
+    }
+  
+    .parent .keys div button{
+        padding: 20px;
+        border-radius: 50%;
+    }
+    .marg{
+        margin: 2px;
+    }
+    .parent .keys div .hover{
+        background-color: orange;
+    }
+    .parent .keys div .hover:hover{
+        background-color: rgb(245, 191, 80);
+    }
+    .keys div{
+        display: flex;
+        gap: 20px;
+    }
+    .keys div button{
+        display: flex;
+        gap: 20px;
+        border: 1px solid white;
+    }
+    .keys div button:hover{
+        background-color: rgb(116, 114, 114);
+        transition: 1.5s ease;
+    }
+    .calculate{
+        background: rgb(122, 203, 235);
+    }
+
+</style>
+<body>
+    <div id="calculator" class="parent">
+            <div class="child">
+                <input id="display" readonly>
+        <div id="keys" class="keys">
+    
+            <div>
+                <button class="hover" onclick="clearDisplay()">C</button>
+                <button class="hover" onclick="appendToDisplay('/')" >/</button>
+                <button class="hover" onclick="appendToDisplay('-')">-</button>
+                <button class="hover" onclick="del()">del</button>
+               
+            </div>
+
+           <div>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="hover" onclick="appendToDisplay('+')">+</button>
+            
+            </div>
+
+            <div class="marg">
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="hover" onclick="appendToDisplay('*')">*</button>
+            
+            
+            </div>
+
+            <div>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+             <button onclick="appendToDisplay('%')" class="hover">%</button>
+             
+            </div>
+
+            <div>
+                
+                <button onclick="appendToDisplay('.')" >.</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('00')">00</button>
+                <button onclick="claculate()" class="calculate">=</button>
+               
+                
+                   
+                
+            </div>
+             
+
+            
+            
+        </div>
+    </div>    
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        function appendToDisplay(input){
+            display.value += input
+        }
+
+        function claculate(){
+            try{
+                 display.value = eval(display.value)
+            }
+            catch(error){
+                display.value = "syntax error"
+            }
+           
+        }
+
+        function clearDisplay(){
+            display.value = "";
+        }
+        function del(){
+            display.value = display.value.slice(0, -1)
+        }
+
+    </script>
+</body>
+</html>
